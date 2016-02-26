@@ -96,7 +96,7 @@ public class ClassTool {
      * @return
      */
     public static Map<String,Object> objToMap(Object obj){
-    	Field[] fields = obj.getClass().getFields() ;
+    	Field[] fields = obj.getClass().getDeclaredFields() ;
     	Map<String ,Object> map = new HashMap<String, Object>(fields.length) ;
     	try {
 			for(Field f:fields){

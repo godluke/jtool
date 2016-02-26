@@ -1,11 +1,13 @@
 package cn.com.llg.jtool.clazz;
 
-import cn.com.llg.jtool.util.UtilTool;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import cn.com.llg.jtool.util.UtilTool;
 
 /**
  * Created by god.luke on 2016/1/23.
@@ -35,4 +37,12 @@ public class ClassToolTest {
         TU tu = (TU) ClassTool.mapToObject(m, TU.class);
         Assert.assertEquals(tu.getStrA(),"strA");
     }
+    
+    @Test
+    public void objToMap()  {
+        TU t = new TU("strA", 100l, new Date()) ;
+        Map<String, Object> m = ClassTool.objToMap(t) ;
+        Assert.assertEquals(m.get("strA"),"strA");
+    }
+    
 }
