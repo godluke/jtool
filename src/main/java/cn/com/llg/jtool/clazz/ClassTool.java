@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +88,25 @@ public class ClassTool {
             throw RunTime.create(e.getMessage(), RunTime.RunTimeType.DataAlter) ;
         }
         return obj ;
+    }
+    
+    /**
+     * 对象实例转为Map对象
+     * @param obj
+     * @return
+     */
+    public static Map<String,Object> objToMap(Object obj){
+    	Field[] fields = obj.getClass().getFields() ;
+    	Map<String ,Object> map = new HashMap<String, Object>(fields.length) ;
+    	try {
+			for(Field f:fields){
+				f.setAccessible(true);
+				map.put(f.getName(), f.get(obj)) ;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+    	return map ;
     }
 
 }
