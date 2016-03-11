@@ -5,7 +5,9 @@ package cn.com.llg.jtool.exception;
  */
 public class RunTime extends RuntimeException {
 
-    RunTimeType type ;
+	private static final long serialVersionUID = -3762718905039622389L;
+	
+	RunTimeType type ;
 
     public enum RunTimeType{
         DataAlter,
